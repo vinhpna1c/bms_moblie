@@ -39,41 +39,45 @@ class PeoplePage extends StatelessWidget {
                     return Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Padding(
-                          padding:
-                              EdgeInsets.only(top: 10, left: 16, right: 14),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                people['position'] as String,
-                                style: BMSTextStyles.h1Text,
-                              ),
-                              Text(
-                                'View All',
-                                style: TextStyle(fontSize: 14),
-                              ),
-                            ],
-                          ),
-                        ),
-                        Center(
-                          child: Wrap(
-                            alignment: WrapAlignment.spaceBetween,
-                            children: peoples.map((people) {
-                              peoples
-                                  .where((people) => people['isRecog'] == true);
-                              return PeopleCard(
-                                peopleName: people['name'] as String,
-                                position: people['position'] as String,
-                              );
-                            }).toList(),
-                          ),
-                        )
-                      ],
-                    );
-                  }).toList(),
-                ),
+                    );}).toList(),
+                //     Column(
+                //       crossAxisAlignment: CrossAxisAlignment.start,
+                //       mainAxisAlignment: MainAxisAlignment.start,
+                //       children: [
+                //         Padding(
+                //           padding:
+                //               EdgeInsets.only(top: 10, left: 16, right: 14),
+                //           child: Row(
+                //             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                //             children: [
+                //               Text(
+                //                 people['position'] as String,
+                //                 style: BMSTextStyles.h1Text,
+                //               ),
+                //               Text(
+                //                 'View All',
+                //                 style: TextStyle(fontSize: 14),
+                //               ),
+                //             ],
+                //           ),
+                //         ),
+                //         Center(
+                //           child: Wrap(
+                //             alignment: WrapAlignment.spaceBetween,
+                //             children: peoples.map((people) {
+                //               peoples
+                //                   .where((people) => people['isRecog'] == true);
+                //               return PeopleCard(
+                //                 peopleName: people['name'] as String,
+                //                 position: people['position'] as String,
+                //               );
+                //             }).toList(),
+                //           ),
+                //         )
+                //       ],
+                //     );
+                //   }).toList(),
+                // ),
               ),
             ),
           ),
