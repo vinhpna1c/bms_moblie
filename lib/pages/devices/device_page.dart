@@ -14,7 +14,13 @@ class DevicePage extends StatelessWidget {
       body: PageContainer(
           child: Column(
         children: [
-          Text('Device Page'),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
+              'Device Page',
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+            ),
+          ),
           Expanded(
             flex: 1,
             child: SingleChildScrollView(
@@ -34,23 +40,35 @@ class DevicePage extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(zone['name'] as String),
-                          Text('View All')
-                        ],
+                      Padding(
+                        padding: EdgeInsets.only(top: 10, left: 16, right: 14),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              zone['name'] as String,
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 14),
+                            ),
+                            Text(
+                              'View All',
+                              style: TextStyle(fontSize: 14),
+                            ),
+                          ],
+                        ),
                       ),
-                      Wrap(
-                        alignment: WrapAlignment.spaceBetween,
-                        children: zone_cameras
-                            .map(
-                              (camera) => DeviceCard(
-                                cameraName: camera['name'] as String,
-                                zone: zone['name'] as String,
-                              ),
-                            )
-                            .toList(),
+                      Center(
+                        child: Wrap(
+                          alignment: WrapAlignment.spaceBetween,
+                          children: zone_cameras
+                              .map(
+                                (camera) => DeviceCard(
+                                  cameraName: camera['name'] as String,
+                                  zone: zone['name'] as String,
+                                ),
+                              )
+                              .toList(),
+                        ),
                       )
                     ],
                   );

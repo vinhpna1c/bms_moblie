@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-class DeviceCard extends StatelessWidget {
-  final String cameraName;
-  final String zone;
-  const DeviceCard({
+class PeopleCard extends StatelessWidget {
+  final String peopleName;
+  final String position;
+  const PeopleCard({
     super.key,
-    this.cameraName = '',
-    this.zone = '',
+    this.peopleName = '',
+    this.position = '',
   });
 
   @override
@@ -27,7 +27,7 @@ class DeviceCard extends StatelessWidget {
             SizedBox(
               height: 80,
               child: Image.asset(
-                'assets/images/cctv_background.png',
+                'assets/images/person_placeholder_1.jpg',
                 fit: BoxFit.cover,
               ),
             ),
@@ -36,11 +36,10 @@ class DeviceCard extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  Icon(Icons.camera_indoor),
                   SizedBox(
                     width: 100,
                     child: Text(
-                      cameraName,
+                      peopleName,
                       overflow: TextOverflow.ellipsis,
                     ),
                   ),
@@ -50,8 +49,7 @@ class DeviceCard extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Icon(Icons.place),
-                SizedBox(width: 100, child: Text(zone)),
+                SizedBox(width: 100, child: Text(position)),
               ],
             ),
           ],

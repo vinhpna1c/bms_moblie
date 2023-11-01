@@ -1,5 +1,10 @@
+import 'package:bms_moblie/components/cards/people_card.dart';
 import 'package:bms_moblie/layouts/app_layout.dart';
+import 'package:bms_moblie/layouts/page_container.dart';
+import 'package:bms_moblie/models/mock/data.dart';
+import 'package:bms_moblie/styles/text_styles.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class PeoplePage extends StatelessWidget {
   const PeoplePage({super.key});
@@ -7,7 +12,73 @@ class PeoplePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AppLayout(
-      body: Text('PeoplePage Page'),
+      body: PageContainer(
+          child: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
+              'People',
+              style: BMSTextStyles.pageTitle,
+            ),
+          ),
+          Expanded(
+            flex: 1,
+            child: SingleChildScrollView(
+              child: Container(
+                width: Get.size.width,
+                constraints: BoxConstraints(
+                  minHeight: Get.size.height - 100,
+                ),
+                color: Colors.white,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.max,
+                  children: peoples.map((people) {
+                    peoples.where((people) => people['isRecog'] == true);
+                    return Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding:
+                              EdgeInsets.only(top: 10, left: 16, right: 14),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                people['position'] as String,
+                                style: BMSTextStyles.h1Text,
+                              ),
+                              Text(
+                                'View All',
+                                style: TextStyle(fontSize: 14),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Center(
+                          child: Wrap(
+                            alignment: WrapAlignment.spaceBetween,
+                            children: peoples.map((people) {
+                              peoples
+                                  .where((people) => people['isRecog'] == true);
+                              return PeopleCard(
+                                peopleName: people['name'] as String,
+                                position: people['position'] as String,
+                              );
+                            }).toList(),
+                          ),
+                        )
+                      ],
+                    );
+                  }).toList(),
+                ),
+              ),
+            ),
+          ),
+        ],
+      )),
     );
   }
 }

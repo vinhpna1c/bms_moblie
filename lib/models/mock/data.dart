@@ -66,6 +66,7 @@ final cameras = [
     "type": StreamType.DEFAULT,
   },
 ];
+
 final zones = [
   {
     "id": '00001',
@@ -87,4 +88,43 @@ final zones = [
       "notify": true,
     }
   }
+];
+
+final peoples = [
+  {
+    "id": '00001',
+    "name": "Le Cong Minh Khoi",
+    "email": "khoilcm@1cinnovation.com",
+    "gender": "Male",
+    "dob": "01/01/2001",
+    "position": "Software Engineer",
+    "isRecog": true,
+  },
+  {
+    "id": '00002',
+    "name": "Phan Nguyen Anh Vinh",
+    "email": "vinhpna@1cinnovation.com",
+    "gender": "Male",
+    "dob": "01/01/2001",
+    "position": "Software Engineer",
+    "isRecog": true,
+  },
+  {
+    "id": '00002',
+    "name": "ID-112",
+    "email": "",
+    "gender": "Male",
+    "dob": "",
+    "position": "Unknown",
+    "isRecog": false,
+  },
+  {
+    "id": '00002',
+    "name": "ID-123",
+    "email": "",
+    "gender": "Male",
+    "dob": "",
+    "position": "Unknown",
+    "isRecog": false,
+  },
 ];
