@@ -72,6 +72,7 @@ final zones = [
     "id": '00001',
     "name": 'Zone 1',
     "description": 'Zone 1 description',
+    "avatar": "assets/images/zone_placeholder.png",
     "setting": {
       "event": 'check-in',
       "limitPeople": 9999,
@@ -80,8 +81,9 @@ final zones = [
   },
   {
     "id": '00002',
-    "name": 'Zone 2 - Security zone',
+    "name": 'Zone 2',
     "description": 'Zone 2 description',
+    "avatar": "assets/images/zone_placeholder.png",
     "setting": {
       "event": 'check-in',
       "limitPeople": 2,
@@ -98,7 +100,8 @@ final peoples = [
     "gender": "Male",
     "dob": "01/01/2001",
     "position": "Software Engineer",
-    "isRecog": true,
+    "recogID": '00001',
+    "avatar": "assets/images/person_placeholder_1.jpg"
   },
   {
     "id": '00002',
@@ -107,24 +110,40 @@ final peoples = [
     "gender": "Male",
     "dob": "01/01/2001",
     "position": "Software Engineer",
-    "isRecog": true,
+    "recogID": '00001',
+    "avatar": "assets/images/person_placeholder_1.jpg"
   },
   {
-    "id": '00002',
+    "id": '00003',
     "name": "ID-112",
     "email": "",
     "gender": "Male",
     "dob": "",
     "position": "Unknown",
-    "isRecog": false,
+    "recogID": '00002',
+    "avatar": "assets/images/person_placeholder_2.webp"
   },
   {
-    "id": '00002',
+    "id": '00004',
     "name": "ID-123",
     "email": "",
     "gender": "Male",
     "dob": "",
     "position": "Unknown",
-    "isRecog": false,
+    "recogID": '00002',
+    "avatar": "assets/images/person_placeholder_2.webp"
   },
+];
+
+final recogs = [
+  {
+    "id": '00001',
+    "name": 'Employee',
+    "description": 'Zone 1 description',
+  },
+  {
+    "id": '00002',
+    "name": 'Unknown',
+    "description": 'Zone 1 description',
+  }
 ];

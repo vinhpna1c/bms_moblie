@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 
-class PeopleCard extends StatelessWidget {
+class ZoneCard extends StatelessWidget {
   final String avatar;
-  final String peopleName;
-  final String position;
-  const PeopleCard({
+  final String zoneName;
+  const ZoneCard({
     super.key,
     this.avatar = '',
-    this.peopleName = '',
-    this.position = '',
+    this.zoneName = '',
   });
 
   @override
@@ -39,27 +37,16 @@ class PeopleCard extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
+                  Icon(Icons.place),
                   SizedBox(
                     width: 100,
                     child: Text(
-                      peopleName,
+                      zoneName,
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
                   ),
                 ],
               ),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                SizedBox(
-                    width: 100,
-                    child: Text(
-                      position,
-                      overflow: TextOverflow.ellipsis,
-                      style: TextStyle(fontSize: 12),
-                    )),
-              ],
             ),
           ],
         ),

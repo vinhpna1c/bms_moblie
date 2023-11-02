@@ -13,8 +13,7 @@ class PeoplePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return AppLayout(
       body: PageContainer(
-          child: Column(
-        children: [
+        child: Column(children: [
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Text(
@@ -34,55 +33,51 @@ class PeoplePage extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisSize: MainAxisSize.max,
-                  children: peoples.map((people) {
-                    peoples.where((people) => people['isRecog'] == true);
+                  children: recogs.map((recog) {
+                    final people_recog = peoples
+                        .where((people) => people['recogID'] == recog['id']);
                     return Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.start,
-                    );}).toList(),
-                //     Column(
-                //       crossAxisAlignment: CrossAxisAlignment.start,
-                //       mainAxisAlignment: MainAxisAlignment.start,
-                //       children: [
-                //         Padding(
-                //           padding:
-                //               EdgeInsets.only(top: 10, left: 16, right: 14),
-                //           child: Row(
-                //             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                //             children: [
-                //               Text(
-                //                 people['position'] as String,
-                //                 style: BMSTextStyles.h1Text,
-                //               ),
-                //               Text(
-                //                 'View All',
-                //                 style: TextStyle(fontSize: 14),
-                //               ),
-                //             ],
-                //           ),
-                //         ),
-                //         Center(
-                //           child: Wrap(
-                //             alignment: WrapAlignment.spaceBetween,
-                //             children: peoples.map((people) {
-                //               peoples
-                //                   .where((people) => people['isRecog'] == true);
-                //               return PeopleCard(
-                //                 peopleName: people['name'] as String,
-                //                 position: people['position'] as String,
-                //               );
-                //             }).toList(),
-                //           ),
-                //         )
-                //       ],
-                //     );
-                //   }).toList(),
-                // ),
+                      children: [
+                        Padding(
+                          padding:
+                              EdgeInsets.only(top: 10, left: 16, right: 14),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                recog['name'] as String,
+                                style: BMSTextStyles.h1Text,
+                              ),
+                              Text(
+                                'View All',
+                                style: TextStyle(fontSize: 14),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Center(
+                          child: Wrap(
+                            alignment: WrapAlignment.spaceBetween,
+                            children: people_recog
+                                .map((people) => PeopleCard(
+                                      avatar: people['avatar'] as String,
+                                      peopleName: people['name'] as String,
+                                      position: people['position'] as String,
+                                    ))
+                                .toList(),
+                          ),
+                        )
+                      ],
+                    );
+                  }).toList(),
+                ),
               ),
             ),
           ),
-        ],
-      )),
+        ]),
+      ),
     );
   }
 }
