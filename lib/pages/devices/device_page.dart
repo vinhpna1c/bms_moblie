@@ -17,7 +17,7 @@ class DevicePage extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Text(
-              'Device Page',
+              'Devices',
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
             ),
           ),

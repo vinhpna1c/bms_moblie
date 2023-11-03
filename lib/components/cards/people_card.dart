@@ -40,7 +40,7 @@ class PeopleCard extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   SizedBox(
-                    width: 100,
+                    width: 140,
                     child: Text(
                       peopleName,
                       style: TextStyle(fontWeight: FontWeight.bold),
@@ -53,10 +53,10 @@ class PeopleCard extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 SizedBox(
-                    width: 100,
+                    width: 140,
                     child: Text(
                       position,
-                      overflow: TextOverflow.ellipsis,
+                      // overflow: TextOverflow.ellipsis,
                       style: TextStyle(fontSize: 12),
                     )),
               ],

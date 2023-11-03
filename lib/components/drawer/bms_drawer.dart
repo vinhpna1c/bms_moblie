@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 // ignore: non_constant_identifier_names
 Drawer BMSDrawer() {
   return Drawer(
+    width: 200,
     backgroundColor: Colors.white,
     child: ListView(
       children: [

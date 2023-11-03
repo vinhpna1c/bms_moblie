@@ -19,13 +19,16 @@ class AppLayout extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: BMSColors.primaryColor,
         actions: const [
-          Row(
-            children: [
-              Text('Hi, User'),
-              CircleAvatar(
-                backgroundColor: Colors.grey,
-              ),
-            ],
+          Padding(
+            padding: EdgeInsets.all(12.0),
+            child: Row(
+              children: [
+                Text('Hi, User'),
+                CircleAvatar(
+                  backgroundColor: Colors.grey,
+                ),
+              ],
+            ),
           )
         ],
       ),
