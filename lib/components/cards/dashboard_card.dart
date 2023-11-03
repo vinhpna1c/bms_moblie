@@ -1,3 +1,4 @@
+import 'package:bms_moblie/components/cards/chart.dart';
 import 'package:flutter/material.dart';
 
 class DashboardCard extends StatelessWidget {

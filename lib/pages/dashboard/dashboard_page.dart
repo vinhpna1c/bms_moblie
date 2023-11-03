@@ -1,3 +1,4 @@
+import 'package:bms_moblie/components/cards/chart.dart';
 import 'package:bms_moblie/components/cards/dashboard_card.dart';
 import 'package:bms_moblie/layouts/app_layout.dart';
 import 'package:bms_moblie/layouts/page_container.dart';
@@ -45,7 +46,7 @@ class DashBoard extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
-                                  "Recently detected faces",
+                                  "Recently Detected Faces",
                                   style: BMSTextStyles.h1Text,
                                 ),
                                 Text(
@@ -85,11 +86,16 @@ class DashBoard extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
-                                  "Activity log",
+                                  "Activity Log",
                                   style: BMSTextStyles.h1Text,
                                 ),
                               ],
                             ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(
+                                left: 8.0, right: 12.0, top: 8.0, bottom: 8.0),
+                            child: BarChart(),
                           ),
                         ],
                       ),
