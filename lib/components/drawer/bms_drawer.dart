@@ -19,7 +19,7 @@ Drawer BMSDrawer() {
           (e) => ListTile(
             leading: Icon(e['icon'] as IconData, color: Colors.black),
             title: Text(e['title'] as String),
-            onTap: () => Get.toNamed(
+            onTap: () => Get.offAllNamed(
               (e['path'] as String),
             ),
           ),

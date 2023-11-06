@@ -36,7 +36,10 @@ class DeviceCard extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  Icon(Icons.camera_indoor),
+                  const Icon(
+                    Icons.camera_indoor,
+                    color: Colors.blue,
+                  ),
                   SizedBox(
                     width: 100,
                     child: Text(
@@ -50,7 +53,10 @@ class DeviceCard extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Icon(Icons.place),
+                const Icon(
+                  Icons.place,
+                  color: Colors.red,
+                ),
                 SizedBox(width: 100, child: Text(zone)),
               ],
             ),

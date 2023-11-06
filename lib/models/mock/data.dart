@@ -235,28 +235,28 @@ final actions = [
 const recentDetecteds = [
   {
     "id": '00001',
-    "time": '03/10/2023-09:00:00',
+    "time": '3 Oct,23-09:00:00',
     "cameraId": '00001',
     "peopleName": 'Khoi LCM',
     "uri": 'assets/images/detected_face.png',
   },
   {
     "id": '00002',
-    "time": '03/10/2023-09:00:00',
+    "time": '3 Oct,23-09:00:00',
     "cameraId": '00001',
     "peopleName": 'Khoi LCM',
     "uri": 'assets/images/detected_face.png',
   },
   {
     "id": '00003',
-    "time": '03/10/2023-09:00:00',
+    "time": '3 Oct,23-09:01:53',
     "cameraId": '00002',
     "peopleName": 'Khoi LCM',
     "uri": 'assets/images/detected_face.png',
   },
   {
     "id": '00004',
-    "time": '03/10/2023-09:00:00',
+    "time": '03/10/2023-09:03:54',
     "cameraId": '00002',
     "peopleName": 'Khoi LCM',
     "uri": 'assets/images/detected_face.png',

@@ -1,8 +1,15 @@
 import 'package:bms_moblie/controllers/route.dart';
+import 'package:bms_moblie/models/device/device.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
 void main() {
+  // SystemChrome.setPreferredOrientations([
+  //   DeviceOrientation.portraitUp,
+  // ]);
+  WidgetsFlutterBinding.ensureInitialized;
+
   runApp(const MyApp());
 }
 

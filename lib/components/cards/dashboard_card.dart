@@ -77,8 +77,8 @@ class DashboardCard extends StatelessWidget {
             ),
             Row(
               children: [
-                Padding(
-                  padding: const EdgeInsets.only(right: 2.0),
+                const Padding(
+                  padding: EdgeInsets.only(right: 2.0),
                   child: Icon(
                     Icons.camera,
                     size: 12,

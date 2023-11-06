@@ -39,7 +39,7 @@ class DashBoard extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          Padding(
+                          const Padding(
                             padding:
                                 EdgeInsets.only(top: 10, left: 16, right: 14),
                             child: Row(

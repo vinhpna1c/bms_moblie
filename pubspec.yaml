@@ -38,6 +38,8 @@ dependencies:
   flutter_vlc_player: ^7.4.0
   get: ^4.6.6
   syncfusion_flutter_charts: ^23.1.43
+  webview_flutter: ^4.4.2
+  intl: ^0.18.1
 
 dev_dependencies:
   flutter_test:
