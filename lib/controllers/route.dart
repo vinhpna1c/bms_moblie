@@ -46,9 +46,9 @@ final drawerNavs = [
     'title': 'Actions',
     'icon': Icons.pending_actions_rounded,
   },
-  {
-    'path': '/setting',
-    'title': 'Settings',
-    'icon': Icons.settings,
-  },
+  // {
+  //   'path': '/setting',
+  //   'title': 'Settings',
+  //   'icon': Icons.settings,
+  // },
 ];

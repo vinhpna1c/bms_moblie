@@ -17,47 +17,53 @@ class DeviceViewAllPage extends StatelessWidget {
   Widget build(BuildContext context) {
     int maxDevices = getMaxDeviceOnPage(devices.length);
     int emptyCell = maxDevices - devices.length;
+    print(maxDevices * (Get.size.width / 4 * 3) / 2 + 50);
     return SingleRouteLayout(
       body: Container(
         color: Colors.white,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Container(
-              constraints: BoxConstraints(maxHeight: Get.size.height - 150),
-              child: GridView.count(
-                crossAxisCount: 2,
-                children: [
-                  ...devices.map((device) {
-                    return AspectRatio(
-                      aspectRatio: 4 / 3,
-                      child: Container(
-                        alignment: Alignment.center,
-                        color: Colors.black,
-                        child: device.type == 1
-                            ? CameraPlayer(rstpUrl: device.connectUri ?? '')
-                            : EzvizPlayer(),
-                      ),
-                    );
-                  }),
-                  ...List.generate(
-                    emptyCell,
-                    (index) => Container(
-                      decoration: BoxDecoration(
-                          border: Border.all(color: Colors.white)),
-                      child: AspectRatio(
+            Center(
+              child: Container(
+                constraints: BoxConstraints(
+                    maxHeight:
+                        maxDevices * (Get.size.width / 2 / 4 * 3) / 2 + 200),
+                child: GridView.count(
+                  crossAxisCount: 2,
+                  children: [
+                    ...devices.map((device) {
+                      return AspectRatio(
                         aspectRatio: 4 / 3,
                         child: Container(
-                          color: Colors.grey,
-                          child: const Icon(
-                            Icons.add,
-                            color: Colors.white,
+                          alignment: Alignment.center,
+                          color: Colors.black,
+                          child: device.type == 1
+                              ? CameraPlayer(rstpUrl: device.connectUri ?? '')
+                              : EzvizPlayer(),
+                        ),
+                      );
+                    }),
+                    ...List.generate(
+                      emptyCell,
+                      (index) => Container(
+                        decoration: BoxDecoration(
+                            border: Border.all(color: Colors.white)),
+                        child: AspectRatio(
+                          aspectRatio: 4 / 3,
+                          child: Container(
+                            color: Colors.grey,
+                            child: const Icon(
+                              Icons.add,
+                              color: Colors.white,
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                  )
-                ],
+                    )
+                  ],
+                ),
               ),
             )
           ],

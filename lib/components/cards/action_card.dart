@@ -41,7 +41,7 @@ class ActionCard extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(top: 8.0),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Padding(
                     padding: const EdgeInsets.only(right: 2.0),
@@ -82,8 +82,9 @@ class ActionCard extends StatelessWidget {
             Row(
               children: [
                 Icon(
-                  Icons.check_circle,
+                  Icons.directions_walk,
                   size: 12,
+                  color: Colors.yellow,
                 ),
                 SizedBox(
                     child: Text(

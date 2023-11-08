@@ -29,4 +29,4 @@ class ApiHandler {
 }
 
 // ignore: non_constant_identifier_names
-final BMS_Api = ApiHandler(baseURL: 'http://103.157.218.126:30000/api');
+final BMS_Api = ApiHandler(baseURL: 'http://103.157.218.126:31000/api');
