@@ -1,13 +1,14 @@
 import 'package:bms_moblie/components/cards/people_card.dart';
-import 'package:bms_moblie/controllers/people_ctrl.dart';
 import 'package:bms_moblie/layouts/app_layout.dart';
 import 'package:bms_moblie/layouts/page_container.dart';
-import 'package:bms_moblie/models/mock/data.dart';
 import 'package:bms_moblie/models/person/person.dart';
 import 'package:bms_moblie/pages/people/person_detail_page.dart';
 import 'package:bms_moblie/styles/text_styles.dart';
+import 'package:bms_moblie/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+import '../../controllers/api/people_ctrl.dart';
 
 class PeoplePage extends StatefulWidget {
   const PeoplePage({super.key});
@@ -70,24 +71,22 @@ class _PeoplePageState extends State<PeoplePage> {
                       ),
                     ),
                     Obx(
-                      () => Center(
-                        child: Wrap(
-                          alignment: WrapAlignment.spaceBetween,
-                          children: people
-                              .map((person) => InkWell(
-                                    onTap: () {
-                                      Get.to(() =>
-                                          PersonDetailPage(person: person));
-                                    },
-                                    child: PeopleCard(
-                                      avatar:
-                                          'assets/images/person_placeholder_1.jpg',
-                                      peopleName: person.name ?? '',
-                                      position: 'Software Engineering',
-                                    ),
-                                  ))
-                              .toList(),
-                        ),
+                      () => Wrap(
+                        alignment: WrapAlignment.spaceBetween,
+                        children: people
+                            .map((person) => InkWell(
+                                  onTap: () {
+                                    Get.to(
+                                        () => PersonDetailPage(person: person));
+                                  },
+                                  child: PeopleCard(
+                                    avatar: handleImagePathServer(
+                                        person.avatarUrl ?? ''),
+                                    peopleName: person.name ?? '',
+                                    position: person.position ?? 'Employee',
+                                  ),
+                                ))
+                            .toList(),
                       ),
                     )
                   ],

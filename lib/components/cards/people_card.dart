@@ -29,9 +29,13 @@ class PeopleCard extends StatelessWidget {
             SizedBox(
               height: 80,
               width: 150,
-              child: Image.asset(
+              child: Image.network(
                 avatar,
-                fit: BoxFit.cover,
+                fit: BoxFit.contain,
+                errorBuilder: (c, o, s) => Image.asset(
+                  'assets/images/person_placeholder_1.jpg',
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
             Padding(

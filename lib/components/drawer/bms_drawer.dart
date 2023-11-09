@@ -1,4 +1,4 @@
-import 'package:bms_moblie/controllers/route.dart';
+import 'package:bms_moblie/controllers/route/route.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

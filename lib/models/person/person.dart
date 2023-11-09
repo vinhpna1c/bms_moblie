@@ -4,6 +4,8 @@ class Person {
   int? gender;
   int? dob;
   String? phone;
+  String? avatarUrl;
+  String? position;
   int? createdAt;
   int? updatedAt;
 
@@ -13,6 +15,8 @@ class Person {
       this.gender,
       this.dob,
       this.phone,
+      this.avatarUrl,
+      this.position,
       this.createdAt,
       this.updatedAt});
 
@@ -22,19 +26,23 @@ class Person {
     gender = json['gender'];
     dob = json['dob'];
     phone = json['phone'];
+    avatarUrl = json['avatar_url'];
+    position = json['position'];
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['person_id'] = this.personId;
-    data['name'] = this.name;
-    data['gender'] = this.gender;
-    data['dob'] = this.dob;
-    data['phone'] = this.phone;
-    data['created_at'] = this.createdAt;
-    data['updated_at'] = this.updatedAt;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['person_id'] = personId;
+    data['name'] = name;
+    data['gender'] = gender;
+    data['dob'] = dob;
+    data['phone'] = phone;
+    data['avatar_url'] = avatarUrl;
+    data['position'] = position;
+    data['created_at'] = createdAt;
+    data['updated_at'] = updatedAt;
     return data;
   }
 }

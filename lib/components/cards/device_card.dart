@@ -3,10 +3,12 @@ import 'package:flutter/material.dart';
 class DeviceCard extends StatelessWidget {
   final String cameraName;
   final String zone;
+  final String placeholderUrl;
   const DeviceCard({
     super.key,
     this.cameraName = '',
     this.zone = '',
+    this.placeholderUrl = '',
   });
 
   @override
@@ -24,11 +26,15 @@ class DeviceCard extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
           children: [
-            SizedBox(
+            Container(
+              alignment: Alignment.center,
               height: 80,
-              child: Image.asset(
-                'assets/images/cctv_background.png',
-                fit: BoxFit.cover,
+              child: Image.network(
+                placeholderUrl,
+                errorBuilder: (context, o, s) => Image.asset(
+                  'assets/images/cctv_background.png',
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
             Padding(

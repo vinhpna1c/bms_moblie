@@ -1,23 +1,23 @@
 import 'package:bms_moblie/components/players/camera_player.dart';
 import 'package:bms_moblie/components/players/ezviz_player.dart';
 import 'package:bms_moblie/layouts/single_route_layout.dart';
-import 'package:bms_moblie/models/device/device.dart';
+import 'package:bms_moblie/models/device/camera.dart';
 import 'package:bms_moblie/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class DeviceViewAllPage extends StatelessWidget {
-  final List<Device> devices;
+  final List<Camera> devices;
   const DeviceViewAllPage({
     super.key,
-    this.devices = const <Device>[],
+    this.devices = const <Camera>[],
   });
 
   @override
   Widget build(BuildContext context) {
     int maxDevices = getMaxDeviceOnPage(devices.length);
     int emptyCell = maxDevices - devices.length;
-    print(maxDevices * (Get.size.width / 4 * 3) / 2 + 50);
+
     return SingleRouteLayout(
       body: Container(
         color: Colors.white,

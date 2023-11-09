@@ -27,9 +27,12 @@ class ZoneCard extends StatelessWidget {
             SizedBox(
               height: 80,
               width: 150,
-              child: Image.asset(
+              child: Image.network(
                 avatar,
-                fit: BoxFit.cover,
+                errorBuilder: (context, o, s) => Image.asset(
+                  'assets/images/zone_placeholder.png',
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
             Padding(
@@ -37,7 +40,7 @@ class ZoneCard extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  Icon(Icons.place),
+                  const Icon(Icons.place),
                   SizedBox(
                     width: 100,
                     child: Text(

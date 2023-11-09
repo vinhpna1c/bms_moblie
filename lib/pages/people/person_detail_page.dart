@@ -4,6 +4,7 @@ import 'package:bms_moblie/layouts/page_container.dart';
 import 'package:bms_moblie/layouts/single_route_layout.dart';
 import 'package:bms_moblie/models/person/person.dart';
 import 'package:bms_moblie/styles/text_styles.dart';
+import 'package:bms_moblie/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
@@ -37,17 +38,24 @@ class PersonDetailPage extends StatelessWidget {
                   children: [
                     Center(
                       child: Container(
+                        alignment: Alignment.center,
+                        width: 160,
+                        height: 160,
                         decoration: BoxDecoration(
-                          color: Colors.grey.shade600,
-                          shape: BoxShape.circle,
-                        ),
-                        child: const Icon(
-                          Icons.person,
-                          size: 116,
-                          color: Colors.white,
-                        ),
+                            color: Colors.grey.shade600,
+                            shape: BoxShape.circle,
+                            image: DecorationImage(
+                                image: NetworkImage(
+                                  handleImagePathServer(person.avatarUrl ?? ''),
+                                  // fit: BoxFit.cover,
+                                  // errorBuilder: (c, o, s) => const Icon(
+                                  //   Icons.person,
+                                  //   size: 116,
+                                  //   color: Colors.white,
+                                  // ),
+                                ),
+                                fit: BoxFit.cover)),
                         margin: EdgeInsets.only(bottom: 24),
-                        padding: EdgeInsets.all(16.0),
                       ),
                     ),
                     Container(

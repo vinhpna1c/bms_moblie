@@ -6,6 +6,7 @@ class ActionCard extends StatelessWidget {
   final String personName;
   final String actions;
   final String cameraName;
+  final String image;
   const ActionCard({
     super.key,
     this.uri = '',
@@ -13,6 +14,7 @@ class ActionCard extends StatelessWidget {
     this.personName = '',
     this.actions = '',
     this.cameraName = '',
+    this.image = '',
   });
 
   @override
@@ -33,9 +35,12 @@ class ActionCard extends StatelessWidget {
             SizedBox(
               height: 80,
               width: 150,
-              child: Image.asset(
-                uri,
-                fit: BoxFit.cover,
+              child: Image.network(
+                image,
+                errorBuilder: (context, o, s) => Image.asset(
+                  'assets/images/person_placeholder_2.webp',
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
             Padding(

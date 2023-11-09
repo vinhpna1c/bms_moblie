@@ -1,4 +1,7 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'package:dio/dio.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class ApiHandler {
   final String baseURL;
@@ -28,5 +31,11 @@ class ApiHandler {
   }
 }
 
-// ignore: non_constant_identifier_names
-final BMS_Api = ApiHandler(baseURL: 'http://103.157.218.126:31000/api');
+// load env data
+final BMS_HOST = dotenv.get('BMS_HOST', fallback: '');
+final BMS_API_PORT = dotenv.get('BMS_API_PORT', fallback: '0');
+final BMS_BLOB_PORT = dotenv.get('BMS_BLOB_PORT', fallback: '0');
+
+// create static handler
+final BMS_Api = ApiHandler(baseURL: 'http://$BMS_HOST:$BMS_API_PORT/api');
+final BMS_Blob = ApiHandler(baseURL: 'http://$BMS_HOST:$BMS_BLOB_PORT');

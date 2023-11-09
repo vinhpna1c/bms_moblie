@@ -1,15 +1,16 @@
-import 'package:bms_moblie/controllers/route.dart';
-import 'package:bms_moblie/models/device/device.dart';
+import 'package:bms_moblie/controllers/route/route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
 
-void main() {
-  // SystemChrome.setPreferredOrientations([
-  //   DeviceOrientation.portraitUp,
-  // ]);
-  WidgetsFlutterBinding.ensureInitialized;
-
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
+  await dotenv.load();
   runApp(const MyApp());
 }
 
