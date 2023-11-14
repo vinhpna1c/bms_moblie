@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:bms_moblie/components/viewers/image_zoom_viewer.dart';
 import 'package:bms_moblie/controllers/api/blob_ctrl.dart';
 import 'package:bms_moblie/controllers/api/log_ctrl.dart';
 import 'package:bms_moblie/layouts/page_container.dart';
@@ -40,7 +41,7 @@ class _DeviceDetailPageState extends State<DeviceDetailPage> {
 
   @override
   void initState() {
-    if ((widget.device?.name ?? '').contains('Hanet')) {
+    if (widget.device?.type == 1) {
       _timer = Timer.periodic(const Duration(milliseconds: INTERVAL_DURATION),
           (timer) {
         fetchLog();
@@ -55,7 +56,6 @@ class _DeviceDetailPageState extends State<DeviceDetailPage> {
     if (_timer != null) {
       _timer!.cancel();
     }
-
     super.dispose();
   }
 
@@ -126,20 +126,24 @@ class _DeviceDetailPageState extends State<DeviceDetailPage> {
                       color: Colors.black,
                       child: ListView(
                         scrollDirection: Axis.horizontal,
-                        children: logs
-                            .map(
-                              (element) => Container(
-                                height: 150,
-                                width: 200,
-                                margin: EdgeInsets.only(right: 16),
-                                child: Image.network(
-                                  BlobController.getUrlByID(
-                                      element.imageId ?? ''),
-                                  fit: BoxFit.contain,
-                                ),
+                        children: logs.map((element) {
+                          final imageUrl =
+                              BlobController.getUrlByID(element.imageId ?? '');
+                          return Container(
+                            height: 150,
+                            width: 200,
+                            margin: const EdgeInsets.only(right: 16),
+                            child: InkWell(
+                              onTap: () {
+                                Get.to(ImageZoomViewer(imgUrl: imageUrl));
+                              },
+                              child: Image.network(
+                                imageUrl,
+                                fit: BoxFit.contain,
                               ),
-                            )
-                            .toList(),
+                            ),
+                          );
+                        }).toList(),
                       ),
                     ),
                   )

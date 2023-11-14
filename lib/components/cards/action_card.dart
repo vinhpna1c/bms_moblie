@@ -23,7 +23,7 @@ class ActionCard extends StatelessWidget {
       padding: const EdgeInsets.all(12.0),
       child: Container(
         width: 160,
-        padding: EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(8.0),
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(8),
             border: Border.all(color: Colors.black38, width: 0.5)),
@@ -48,8 +48,8 @@ class ActionCard extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.only(right: 2.0),
+                  const Padding(
+                    padding: EdgeInsets.only(right: 2.0),
                     child: Icon(Icons.access_time, size: 10),
                   ),
                   SizedBox(

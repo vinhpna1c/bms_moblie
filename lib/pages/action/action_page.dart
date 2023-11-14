@@ -1,13 +1,39 @@
 import 'package:bms_moblie/components/cards/action_card.dart';
+import 'package:bms_moblie/controllers/api/blob_ctrl.dart';
+import 'package:bms_moblie/controllers/api/log_ctrl.dart';
+import 'package:bms_moblie/controllers/api/zone_ctrl.dart';
+import 'package:bms_moblie/controllers/data/zone_ctrl.d.dart';
 import 'package:bms_moblie/layouts/app_layout.dart';
 import 'package:bms_moblie/layouts/page_container.dart';
-import 'package:bms_moblie/models/mock/data.dart';
+import 'package:bms_moblie/models/log/log.dart';
 import 'package:bms_moblie/styles/text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 
-class ActionPage extends StatelessWidget {
+class ActionPage extends StatefulWidget {
   const ActionPage({super.key});
+
+  @override
+  State<ActionPage> createState() => _ActionPageState();
+}
+
+class _ActionPageState extends State<ActionPage> {
+  RxList<Log> actions = <Log>[].obs;
+  final zone_d_ctrl = ZoneDataController();
+
+  @override
+  void initState() {
+    LogController.getAllLog().then((_logs) {
+      actions.clear();
+      actions.addAll(_logs);
+    });
+    ZoneController.getAllZone().then((_zones) {
+      zone_d_ctrl.zones.clear();
+      zone_d_ctrl.zones.addAll(_zones);
+    });
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -24,67 +50,29 @@ class ActionPage extends StatelessWidget {
           Expanded(
             flex: 1,
             child: SingleChildScrollView(
-              child: Container(
-                width: Get.size.width,
-                constraints: BoxConstraints(
-                  minHeight: Get.size.height - 100,
-                ),
-                color: Colors.white,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisSize: MainAxisSize.max,
-                  children: zones.map((zone) {
-                    final zone_actions = actions
-                        .where((action) => action['zoneId'] == zone['id']);
-                    return Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Padding(
-                          padding:
-                              EdgeInsets.only(top: 10, left: 16, right: 14),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                zone['name'] as String,
-                                style: BMSTextStyles.h1Text,
-                              ),
-                              Text(
-                                'View All',
-                                style: TextStyle(fontSize: 14),
-                              ),
-                            ],
-                          ),
-                        ),
-                        Center(
-                          child: Wrap(
-                            alignment: WrapAlignment.spaceBetween,
-                            children: zone_actions.map((zone_action) {
-                              final takeCams = cameras
-                                  .where((camera) =>
-                                      camera['id'] == zone_action['cameraId'])
-                                  .toList();
-                              return Wrap(
-                                children: takeCams
-                                    .map((takeCam) => ActionCard(
-                                          uri: zone_action['uri'] as String,
-                                          time: zone_action['time'] as String,
-                                          personName: zone_action['peopleName']
-                                              as String,
-                                          actions:
-                                              zone_action['type'] as String,
-                                          cameraName: takeCam['name'] as String,
-                                        ))
-                                    .toList(),
-                              );
-                            }).toList(),
-                          ),
-                        )
-                      ],
-                    );
-                  }).toList(),
-                ),
+              child: Obx(
+                () => Container(
+                    width: Get.size.width,
+                    constraints: BoxConstraints(
+                      minHeight: Get.size.height - 100,
+                    ),
+                    color: Colors.white,
+                    child: Wrap(
+                      alignment: WrapAlignment.spaceBetween,
+                      children: actions.map((action) {
+                        return ActionCard(
+                          image:
+                              BlobController.getUrlByID(action.imageId ?? ''),
+                          uri: action.videoUrl ?? '',
+                          time: DateFormat('').format(
+                              DateTime.fromMillisecondsSinceEpoch(
+                                  action.createdAt ?? 0)),
+                          personName: action.faceId.toString(),
+                          actions: 'check-in',
+                          cameraName: action.faceId.toString(),
+                        );
+                      }).toList(),
+                    )),
               ),
             ),
           ),

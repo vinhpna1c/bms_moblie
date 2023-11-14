@@ -1,6 +1,7 @@
-import 'package:bms_moblie/controllers/route/route.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+import '../../controllers/route/route.dart';
 
 // ignore: non_constant_identifier_names
 Drawer BMSDrawer() {

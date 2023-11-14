@@ -33,16 +33,16 @@ class Camera {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['name'] = this.name;
-    data['description'] = this.description;
-    data['connect_uri'] = this.connectUri;
-    data['placeholder_url'] = this.placeholderUrl;
-    data['type'] = this.type;
-    data['created_at'] = this.createdAt;
-    data['updated_at'] = this.updatedAt;
-    data['zone_id'] = this.zoneId;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['name'] = name;
+    data['description'] = description;
+    data['connect_uri'] = connectUri;
+    data['placeholder_url'] = placeholderUrl;
+    data['type'] = type;
+    data['created_at'] = createdAt;
+    data['updated_at'] = updatedAt;
+    data['zone_id'] = zoneId;
     return data;
   }
 }

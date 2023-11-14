@@ -1,4 +1,3 @@
-import 'package:bms_moblie/components/cards/chart.dart';
 import 'package:flutter/material.dart';
 
 class DashboardCard extends StatelessWidget {
@@ -42,8 +41,8 @@ class DashboardCard extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.only(right: 2.0),
+                  const Padding(
+                    padding: EdgeInsets.only(right: 2.0),
                     child: Icon(Icons.access_time, size: 10),
                   ),
                   SizedBox(
@@ -61,8 +60,8 @@ class DashboardCard extends StatelessWidget {
               children: [
                 Row(
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.only(right: 2.0),
+                    const Padding(
+                      padding: EdgeInsets.only(right: 2.0),
                       child: Icon(Icons.person, size: 12),
                     ),
                     SizedBox(

@@ -59,8 +59,8 @@ class _CameraPlayerState extends State<CameraPlayer> {
 
   @override
   void dispose() async {
-    super.dispose();
-    await _controller.stopRendererScanning();
+    await _controller.stop();
     await _controller.dispose();
+    super.dispose();
   }
 }

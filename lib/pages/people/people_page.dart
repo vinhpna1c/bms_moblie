@@ -74,18 +74,20 @@ class _PeoplePageState extends State<PeoplePage> {
                       () => Wrap(
                         alignment: WrapAlignment.spaceBetween,
                         children: people
-                            .map((person) => InkWell(
-                                  onTap: () {
-                                    Get.to(
-                                        () => PersonDetailPage(person: person));
-                                  },
-                                  child: PeopleCard(
-                                    avatar: handleImagePathServer(
-                                        person.avatarUrl ?? ''),
-                                    peopleName: person.name ?? '',
-                                    position: person.position ?? 'Employee',
-                                  ),
-                                ))
+                            .map(
+                              (person) => InkWell(
+                                onTap: () {
+                                  Get.to(
+                                      () => PersonDetailPage(person: person));
+                                },
+                                child: PeopleCard(
+                                  avatar: handleImagePathServer(
+                                      person.avatarUrl ?? ''),
+                                  peopleName: person.name ?? '',
+                                  position: person.position ?? 'Employee',
+                                ),
+                              ),
+                            )
                             .toList(),
                       ),
                     )
