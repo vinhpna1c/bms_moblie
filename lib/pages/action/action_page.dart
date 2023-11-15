@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:bms_moblie/components/cards/action_card.dart';
 import 'package:bms_moblie/controllers/api/blob_ctrl.dart';
 import 'package:bms_moblie/controllers/api/log_ctrl.dart';
@@ -20,6 +22,7 @@ class ActionPage extends StatefulWidget {
 
 class _ActionPageState extends State<ActionPage> {
   RxList<Log> actions = <Log>[].obs;
+  RxBool isLoading = true.obs;
   final zone_d_ctrl = ZoneDataController();
 
   @override
@@ -27,6 +30,7 @@ class _ActionPageState extends State<ActionPage> {
     LogController.getAllLog().then((_logs) {
       actions.clear();
       actions.addAll(_logs);
+      isLoading.value = false;
     });
     ZoneController.getAllZone().then((_zones) {
       zone_d_ctrl.zones.clear();
@@ -57,22 +61,24 @@ class _ActionPageState extends State<ActionPage> {
                       minHeight: Get.size.height - 100,
                     ),
                     color: Colors.white,
-                    child: Wrap(
-                      alignment: WrapAlignment.spaceBetween,
-                      children: actions.map((action) {
-                        return ActionCard(
-                          image:
-                              BlobController.getUrlByID(action.imageId ?? ''),
-                          uri: action.videoUrl ?? '',
-                          time: DateFormat('').format(
-                              DateTime.fromMillisecondsSinceEpoch(
-                                  action.createdAt ?? 0)),
-                          personName: action.faceId.toString(),
-                          actions: 'check-in',
-                          cameraName: action.faceId.toString(),
-                        );
-                      }).toList(),
-                    )),
+                    child: isLoading.value
+                        ? const CircularProgressIndicator()
+                        : Wrap(
+                            alignment: WrapAlignment.spaceBetween,
+                            children: actions.map((action) {
+                              return ActionCard(
+                                image: BlobController.getUrlByID(
+                                    action.imageId ?? ''),
+                                uri: action.videoUrl ?? '',
+                                time: DateFormat('HH:mm:ss d/M/y').format(
+                                    DateTime.fromMillisecondsSinceEpoch(
+                                        (action.createdAt ?? 0) * 1000)),
+                                faceId: action.faceId,
+                                actions: 'check-in',
+                                cameraId: 1,
+                              );
+                            }).toList(),
+                          )),
               ),
             ),
           ),

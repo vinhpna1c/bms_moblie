@@ -23,10 +23,10 @@ class AppLayout extends StatelessWidget {
             padding: EdgeInsets.all(12.0),
             child: Row(
               children: [
-                Text('Hi, User'),
-                CircleAvatar(
-                  backgroundColor: Colors.grey,
-                ),
+                // Text('Hi, User'),
+                // CircleAvatar(
+                //   backgroundColor: Colors.grey,
+                // ),
               ],
             ),
           )

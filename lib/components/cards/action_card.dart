@@ -1,21 +1,53 @@
+import 'package:bms_moblie/controllers/api/device_ctrl.dart';
+import 'package:bms_moblie/controllers/api/face_ctrl.dart';
+import 'package:bms_moblie/controllers/api/people_ctrl.dart';
+import 'package:bms_moblie/models/device/camera.dart';
+import 'package:bms_moblie/models/person/person.dart';
+import 'package:bms_moblie/r.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-class ActionCard extends StatelessWidget {
+class ActionCard extends StatefulWidget {
   final String uri;
   final String time;
-  final String personName;
+  final int? faceId;
   final String actions;
-  final String cameraName;
+  final int? cameraId;
   final String image;
   const ActionCard({
     super.key,
     this.uri = '',
     this.time = '',
-    this.personName = '',
+    this.faceId,
     this.actions = '',
-    this.cameraName = '',
+    this.cameraId,
     this.image = '',
   });
+
+  @override
+  State<ActionCard> createState() => _ActionCardState();
+}
+
+class _ActionCardState extends State<ActionCard> {
+  Rx<Person?> person = Rx(null);
+  Rx<Camera?> camera = Rx(null);
+
+  @override
+  void initState() {
+    if (widget.cameraId != null) {
+      DeviceController.getDeviceDetail(widget.cameraId.toString())
+          .then((value) => camera.value = value);
+    }
+    if (widget.faceId != null) {
+      FaceController.getFaceByID(widget.cameraId.toString()).then((face) {
+        if (face?.personId != null) {
+          PeopleController.getPeopleByID(face!.personId.toString())
+              .then((p) => person.value = p);
+        }
+      });
+    }
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -36,9 +68,9 @@ class ActionCard extends StatelessWidget {
               height: 80,
               width: 150,
               child: Image.network(
-                image,
+                widget.image,
                 errorBuilder: (context, o, s) => Image.asset(
-                  'assets/images/person_placeholder_2.webp',
+                  AssetImages.personPlaceholder2,
                   fit: BoxFit.cover,
                 ),
               ),
@@ -50,13 +82,23 @@ class ActionCard extends StatelessWidget {
                 children: [
                   const Padding(
                     padding: EdgeInsets.only(right: 2.0),
-                    child: Icon(Icons.access_time, size: 10),
+                    child: Row(
+                      children: [
+                        Icon(Icons.access_time, size: 10),
+                        Text(
+                          'Time:',
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(fontSize: 11),
+                        ),
+                      ],
+                    ),
                   ),
-                  SizedBox(
-                    width: 130,
+                  Container(
+                    alignment: Alignment.centerRight,
                     child: Text(
-                      time,
-                      style: TextStyle(fontSize: 12),
+                      widget.time,
+                      style: const TextStyle(
+                          fontSize: 10, fontStyle: FontStyle.italic),
                     ),
                   ),
                 ],
@@ -67,47 +109,51 @@ class ActionCard extends StatelessWidget {
               children: [
                 Row(
                   children: [
-                    Icon(Icons.person, size: 12),
-                    SizedBox(
-                        child: Text(
-                      personName,
-                      overflow: TextOverflow.ellipsis,
-                      style: TextStyle(fontSize: 12),
-                    )),
+                    const Icon(
+                      Icons.person,
+                      size: 12,
+                      color: Colors.blue,
+                    ),
+                    Obx(
+                      () => Text(
+                        person.value?.name ?? '',
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(fontSize: 11),
+                      ),
+                    ),
                   ],
                 ),
-                SizedBox(
-                    child: Text(
+                const Text(
                   "63%",
                   overflow: TextOverflow.ellipsis,
-                  style: TextStyle(fontSize: 12),
-                )),
+                  style: TextStyle(fontSize: 11),
+                ),
               ],
             ),
             Row(
               children: [
-                Icon(
+                const Icon(
                   Icons.directions_walk,
                   size: 12,
                   color: Colors.yellow,
                 ),
-                SizedBox(
+                const SizedBox(
                     child: Text(
                   "Actions: ",
                   overflow: TextOverflow.ellipsis,
-                  style: TextStyle(fontSize: 12),
+                  style: TextStyle(fontSize: 11),
                 )),
                 Container(
                     alignment: Alignment.center,
                     width: 60,
                     height: 20,
-                    child: Text(
-                      actions,
-                      style: TextStyle(color: Colors.white, fontSize: 12),
-                    ),
                     decoration: BoxDecoration(
                       color: Colors.green,
                       borderRadius: BorderRadius.circular(4),
+                    ),
+                    child: Text(
+                      widget.actions,
+                      style: TextStyle(color: Colors.white, fontSize: 11),
                     ))
               ],
             ),
@@ -117,12 +163,14 @@ class ActionCard extends StatelessWidget {
                   Icons.camera,
                   size: 12,
                 ),
-                SizedBox(
-                    child: Text(
-                  cameraName,
-                  overflow: TextOverflow.ellipsis,
-                  style: TextStyle(fontSize: 12),
-                )),
+                Obx(
+                  () => SizedBox(
+                      child: Text(
+                    camera.value?.name ?? '',
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(fontSize: 11),
+                  )),
+                ),
               ],
             ),
           ],

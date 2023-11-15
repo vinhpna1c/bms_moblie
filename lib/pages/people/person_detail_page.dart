@@ -102,18 +102,18 @@ class PersonDetailPage extends StatelessWidget {
                             child: Row(
                               children: [
                                 ActionCard(
-                                    personName: person.name ?? '',
+                                    faceId: 1,
                                     uri:
                                         'assets/images/person_placeholder_2.webp',
                                     actions: 'check-in',
-                                    cameraName: 'Hanet',
+                                    cameraId: 1,
                                     time: '6 Sep,23 09:00:00'),
                                 ActionCard(
-                                    personName: person.name ?? '',
+                                    faceId: 1,
                                     uri:
                                         'assets/images/person_placeholder_2.webp',
                                     actions: 'check-in',
-                                    cameraName: 'Hanet',
+                                    cameraId: 1,
                                     time: '6 Sep,23 09:00:00'),
                               ],
                             ),

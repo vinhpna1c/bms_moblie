@@ -53,8 +53,10 @@ class _DeviceDetailPageState extends State<DeviceDetailPage> {
 
   @override
   void dispose() {
+    print('Call dispose device');
     if (_timer != null) {
       _timer!.cancel();
+      print('Cancel Timmer');
     }
     super.dispose();
   }
