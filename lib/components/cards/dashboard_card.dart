@@ -18,7 +18,7 @@ class DashboardCard extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(12.0),
       child: Container(
-        width: 160,
+        width: 180,
         padding: EdgeInsets.all(8.0),
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(8),
@@ -29,8 +29,8 @@ class DashboardCard extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             SizedBox(
-              height: 80,
-              width: 150,
+              height: 120,
+              width: 170,
               child: Image.asset(
                 uri,
                 fit: BoxFit.cover,
@@ -43,13 +43,14 @@ class DashboardCard extends StatelessWidget {
                 children: [
                   const Padding(
                     padding: EdgeInsets.only(right: 2.0),
-                    child: Icon(Icons.access_time, size: 10),
+                    child: Icon(Icons.access_time, size: 14),
                   ),
                   SizedBox(
                     width: 130,
                     child: Text(
                       time,
-                      style: TextStyle(fontSize: 12),
+                      style:
+                          TextStyle(fontSize: 12, fontStyle: FontStyle.italic),
                     ),
                   ),
                 ],
@@ -62,12 +63,15 @@ class DashboardCard extends StatelessWidget {
                   children: [
                     const Padding(
                       padding: EdgeInsets.only(right: 2.0),
-                      child: Icon(Icons.person, size: 12),
+                      child: Icon(
+                        Icons.person,
+                        size: 14,
+                        color: Colors.blue,
+                      ),
                     ),
                     SizedBox(
                         child: Text(
                       personName,
-                      overflow: TextOverflow.ellipsis,
                       style: TextStyle(fontSize: 12),
                     )),
                   ],
@@ -80,13 +84,12 @@ class DashboardCard extends StatelessWidget {
                   padding: EdgeInsets.only(right: 2.0),
                   child: Icon(
                     Icons.camera,
-                    size: 12,
+                    size: 14,
                   ),
                 ),
                 SizedBox(
                     child: Text(
                   cameraName,
-                  overflow: TextOverflow.ellipsis,
                   style: TextStyle(fontSize: 12),
                 )),
               ],

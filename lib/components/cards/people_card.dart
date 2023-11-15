@@ -16,7 +16,7 @@ class PeopleCard extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(12.0),
       child: Container(
-        width: 160,
+        width: 180,
         padding: EdgeInsets.all(8.0),
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(8),
@@ -27,8 +27,8 @@ class PeopleCard extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             SizedBox(
-              height: 80,
-              width: 150,
+              height: 120,
+              width: 170,
               child: Image.network(
                 avatar,
                 fit: BoxFit.contain,

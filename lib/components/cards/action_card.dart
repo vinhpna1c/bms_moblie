@@ -52,9 +52,11 @@ class _ActionCardState extends State<ActionCard> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(12.0),
+      padding:
+          const EdgeInsets.only(right: 12.0, left: 12, top: 16, bottom: 16),
       child: Container(
-        width: 160,
+        height: 200,
+        width: 180,
         padding: const EdgeInsets.all(8.0),
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(8),
@@ -65,8 +67,8 @@ class _ActionCardState extends State<ActionCard> {
           mainAxisSize: MainAxisSize.min,
           children: [
             SizedBox(
-              height: 80,
-              width: 150,
+              height: 100,
+              width: 170,
               child: Image.network(
                 widget.image,
                 errorBuilder: (context, o, s) => Image.asset(
@@ -80,25 +82,25 @@ class _ActionCardState extends State<ActionCard> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Padding(
-                    padding: EdgeInsets.only(right: 2.0),
-                    child: Row(
-                      children: [
-                        Icon(Icons.access_time, size: 10),
-                        Text(
-                          'Time:',
-                          overflow: TextOverflow.ellipsis,
-                          style: TextStyle(fontSize: 11),
-                        ),
-                      ],
-                    ),
+                  Row(
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.only(right: 2.0),
+                        child: Icon(Icons.access_time, size: 12),
+                      ),
+                      Text(
+                        'Time:',
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(fontSize: 12),
+                      ),
+                    ],
                   ),
                   Container(
                     alignment: Alignment.centerRight,
                     child: Text(
                       widget.time,
                       style: const TextStyle(
-                          fontSize: 10, fontStyle: FontStyle.italic),
+                          fontSize: 11, fontStyle: FontStyle.italic),
                     ),
                   ),
                 ],
@@ -109,16 +111,19 @@ class _ActionCardState extends State<ActionCard> {
               children: [
                 Row(
                   children: [
-                    const Icon(
-                      Icons.person,
-                      size: 12,
-                      color: Colors.blue,
+                    Padding(
+                      padding: const EdgeInsets.only(right: 2.0),
+                      child: const Icon(
+                        Icons.person,
+                        size: 14,
+                        color: Colors.blue,
+                      ),
                     ),
                     Obx(
                       () => Text(
                         person.value?.name ?? '',
                         overflow: TextOverflow.ellipsis,
-                        style: TextStyle(fontSize: 11),
+                        style: TextStyle(fontSize: 12),
                       ),
                     ),
                   ],
@@ -126,22 +131,25 @@ class _ActionCardState extends State<ActionCard> {
                 const Text(
                   "63%",
                   overflow: TextOverflow.ellipsis,
-                  style: TextStyle(fontSize: 11),
+                  style: TextStyle(fontSize: 12),
                 ),
               ],
             ),
             Row(
               children: [
-                const Icon(
-                  Icons.directions_walk,
-                  size: 12,
-                  color: Colors.yellow,
+                Padding(
+                  padding: const EdgeInsets.only(right: 2.0),
+                  child: const Icon(
+                    Icons.directions_walk,
+                    size: 14,
+                    color: Colors.yellow,
+                  ),
                 ),
                 const SizedBox(
                     child: Text(
                   "Actions: ",
                   overflow: TextOverflow.ellipsis,
-                  style: TextStyle(fontSize: 11),
+                  style: TextStyle(fontSize: 12),
                 )),
                 Container(
                     alignment: Alignment.center,
@@ -153,22 +161,25 @@ class _ActionCardState extends State<ActionCard> {
                     ),
                     child: Text(
                       widget.actions,
-                      style: TextStyle(color: Colors.white, fontSize: 11),
+                      style: TextStyle(color: Colors.white, fontSize: 12),
                     ))
               ],
             ),
             Row(
               children: [
-                Icon(
-                  Icons.camera,
-                  size: 12,
+                Padding(
+                  padding: const EdgeInsets.only(right: 2.0),
+                  child: Icon(
+                    Icons.camera,
+                    size: 14,
+                  ),
                 ),
                 Obx(
                   () => SizedBox(
                       child: Text(
                     camera.value?.name ?? '',
                     overflow: TextOverflow.ellipsis,
-                    style: TextStyle(fontSize: 11),
+                    style: TextStyle(fontSize: 12),
                   )),
                 ),
               ],
