@@ -85,12 +85,14 @@ class PersonDetailPage extends StatelessWidget {
                       ]),
                     ),
                     Container(
+                      width: Get.size.width,
                       decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(16.0),
                       ),
-                      padding: EdgeInsets.all(16.0),
+                      padding: EdgeInsets.all(16),
                       child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
@@ -100,6 +102,7 @@ class PersonDetailPage extends StatelessWidget {
                           SingleChildScrollView(
                             scrollDirection: Axis.horizontal,
                             child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 ActionCard(
                                     faceId: 1,
@@ -108,6 +111,9 @@ class PersonDetailPage extends StatelessWidget {
                                     actions: 'check-in',
                                     cameraId: 1,
                                     time: '6 Sep,23 09:00:00'),
+                                SizedBox(
+                                  width: 10,
+                                ),
                                 ActionCard(
                                     faceId: 1,
                                     uri:

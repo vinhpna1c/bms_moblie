@@ -40,7 +40,10 @@ class ZoneCard extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  const Icon(Icons.place),
+                  const Icon(
+                    Icons.place,
+                    color: Colors.red,
+                  ),
                   SizedBox(
                     width: 100,
                     child: Text(
