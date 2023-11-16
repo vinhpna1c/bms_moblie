@@ -2,7 +2,7 @@ import 'package:bms_moblie/controllers/api/api.dart';
 import 'package:bms_moblie/models/log/log.dart';
 
 class LogController {
-  static final LOG_PATH = '/camera';
+  static final LOG_PATH = '/log';
 
   static Future<List<Log>> getAllLog() async {
     List<Log> logs = [];
