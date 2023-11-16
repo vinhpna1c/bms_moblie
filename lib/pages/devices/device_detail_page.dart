@@ -129,18 +129,21 @@ class _DeviceDetailPageState extends State<DeviceDetailPage> {
                       child: ListView(
                         scrollDirection: Axis.horizontal,
                         children: logs.map((element) {
-                          final imageUrl =
-                              BlobController.getUrlByID(element.imageId ?? '');
+                          // final imageUrl =
+                          //     BlobController.getUrlByID('Living Room');
+
+                          // print(imageUrl);
                           return Container(
                             height: 150,
                             width: 200,
                             margin: const EdgeInsets.only(right: 16),
                             child: InkWell(
                               onTap: () {
-                                Get.to(ImageZoomViewer(imgUrl: imageUrl));
+                                Get.to(ImageZoomViewer(
+                                    imgUrl: element.drew_image_url ?? ''));
                               },
                               child: Image.network(
-                                imageUrl,
+                                element.drew_image_url ?? '',
                                 fit: BoxFit.contain,
                               ),
                             ),

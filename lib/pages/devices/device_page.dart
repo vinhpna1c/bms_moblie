@@ -33,6 +33,7 @@ class _DevicePageState extends State<DevicePage> {
       zoneController.zones.clear();
       zoneController.zones.addAll(data);
     });
+
     DeviceController.getAllDevice().then((data) {
       devices.clear();
       devices.addAll(data);

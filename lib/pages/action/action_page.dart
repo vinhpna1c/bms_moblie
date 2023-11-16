@@ -44,44 +44,44 @@ class _ActionPageState extends State<ActionPage> {
     return AppLayout(
       body: PageContainer(
         child: Column(children: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text(
-              'Actions',
-              style: BMSTextStyles.pageTitle,
-            ),
-          ),
-          Expanded(
-            flex: 1,
-            child: SingleChildScrollView(
-              child: Obx(
-                () => Container(
-                    width: Get.size.width,
-                    constraints: BoxConstraints(
-                      minHeight: Get.size.height - 100,
-                    ),
-                    color: Colors.white,
-                    child: isLoading.value
-                        ? const CircularProgressIndicator()
-                        : Wrap(
-                            alignment: WrapAlignment.spaceBetween,
-                            children: actions.map((action) {
-                              return ActionCard(
-                                image: BlobController.getUrlByID(
-                                    action.imageId ?? ''),
-                                uri: action.videoUrl ?? '',
-                                time: DateFormat('HH:mm:ss d/M/y').format(
-                                    DateTime.fromMillisecondsSinceEpoch(
-                                        (action.createdAt ?? 0) * 1000)),
-                                faceId: action.faceId,
-                                actions: 'check-in',
-                                cameraId: 1,
-                              );
-                            }).toList(),
-                          )),
-              ),
-            ),
-          ),
+          // Padding(
+          //   padding: const EdgeInsets.all(8.0),
+          //   child: Text(
+          //     'Actions',
+          //     style: BMSTextStyles.pageTitle,
+          //   ),
+          // ),
+          // Expanded(
+          //   flex: 1,
+          //   child: SingleChildScrollView(
+          //     child: Obx(
+          //       () => Container(
+          //           width: Get.size.width,
+          //           constraints: BoxConstraints(
+          //             minHeight: Get.size.height - 100,
+          //           ),
+          //           color: Colors.white,
+          //           child: isLoading.value
+          //               ? const Center(child: CircularProgressIndicator())
+          //               : Wrap(
+          //                   alignment: WrapAlignment.spaceBetween,
+          //                   children: actions.map((action) {
+          //                     return ActionCard(
+          //                       image: BlobController.getUrlByID(
+          //                           action.imageId ?? ''),
+          //                       uri: action.videoUrl ?? '',
+          //                       time: DateFormat('HH:mm:ss d/M/y').format(
+          //                           DateTime.fromMillisecondsSinceEpoch(
+          //                               (action.createdAt ?? 0) * 1000)),
+          //                       faceId: action.faceId,
+          //                       actions: 'Check-in',
+          //                       cameraId: 1,
+          //                     );
+          //                   }).toList(),
+          //                 )),
+          //     ),
+          //   ),
+          // ),
         ]),
       ),
     );

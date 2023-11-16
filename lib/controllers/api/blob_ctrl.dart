@@ -3,7 +3,7 @@ import 'package:dio/dio.dart';
 
 class BlobController {
   static String getUrlByID(String id) {
-    return 'http://$BMS_HOST:$BMS_BLOB_PORT/blob/$id';
+    return 'http://$BMS_HOST:$BMS_BLOB_PORT/camera/$id';
   }
 
   static Future<String?> uploadImage(String filePath,

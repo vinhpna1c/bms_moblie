@@ -1,40 +1,48 @@
 class Log {
   int? id;
-  String? videoUrl;
-  String? imageId;
+  int? x;
+  int? y;
+  int? w;
+  int? h;
+  String? image_url;
+  String? drew_image_url;
   int? createdAt;
-  int? updatedAt;
-  int? eventId;
-  int? faceId;
+  // int? updatedAt;
+  // int? eventId;
+  // int? faceId;
 
   Log(
       {this.id,
-      this.videoUrl,
-      this.imageId,
+      this.image_url,
+      this.drew_image_url,
+      // this.imageId,
       this.createdAt,
-      this.updatedAt,
-      this.eventId,
-      this.faceId});
+      this.x,
+      this.y,
+      this.w,
+      this.h});
 
   Log.fromJson(Map<String, dynamic> json) {
     id = json['id'];
-    videoUrl = json['video_url'];
-    imageId = json['image_id'];
+    image_url = json['image_url'];
+    drew_image_url = json['drew_image_url'];
     createdAt = json['created_at'];
-    updatedAt = json['updated_at'];
-    eventId = json['event_id'];
-    faceId = json['face_id'];
+    x = json['x'];
+    y = json['y'];
+    w = json['w'];
+    h = json['h'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['id'] = id;
-    data['video_url'] = videoUrl;
-    data['image_id'] = imageId;
+    data['image_url'] = image_url;
+    data['drew_image_url'] = drew_image_url;
     data['created_at'] = createdAt;
-    data['updated_at'] = updatedAt;
-    data['event_id'] = eventId;
-    data['face_id'] = faceId;
+    data['x'] = x;
+    data['y'] = y;
+    data['w'] = w;
+    data['h'] = h;
     return data;
   }
 }
